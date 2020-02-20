@@ -1,0 +1,47 @@
+Maxwell Kaye
+Comp 15 Project 2
+May 1st 2018
+README File
+
+
+The Purpose of the Program
+
+	The purpose of the program is to allow the user to search for words in a file or files with in a directory, and have the program output the paths to the files in which the word is contauined, the lines in which the word is contained, as well as the line numbers of those lines.
+
+
+Acknowledgements for help received
+
+	I consulted with TAs, my friend's dad, and Laney when debugging my code and planning.
+
+
+The files provided and short descriptions of what each file is and its purpose
+
+	gerp.cpp: driver for the whole program
+	HashTable.h: interface for the HashTable class
+	HashTable.cpp: implementation of the HashTable class
+	HashString.h: interface for the HashString class
+	HashString.cpp: implementation of the HashString class
+	LinkedList.h: interface for the LinkedList class
+	LinkedList.cpp: implementation of the LinkedList class
+	FSTree.h: interface for the FSTree class
+	FSTree.cpp: implementation of the FSTree class
+	DirNode.h: interface for the FSTree class
+	DirNode.cpp: implementation of the DirNode class
+	NodeType.h: interface for the NodeType struct
+	Makefile: compiles the program
+	README: this file describes the inner-workings of the program
+
+
+An outline of the data structures and algorithms that you used
+
+	The driver starts out by instantiating an FSTree object, which is a tree of DirNodes, that basically stores the network of directories in a data structure. Next, the recursive traverse function (in gerp.cpp) is used to find all of the paths to files in the FSTree, and stores them as strings in a LinkedList called paths. Next, a HashTable of HashStrings (which have attributes for the word, the line, the line number, and a LinkedList of other HashStrings with the same hash value) is created and populated with every word in the file in the inputted directory (as a command line argument). The words are read in using the getline function, then converting into a stringstream object to parse the line into its individual words. The HashTable uses a form of chaining to deal with collisions, in that whenever their is a collision, the HashString that is to be inserted is instead inserted into the current HashString's LinkedList. 
+
+Details and an explanation of how you tested the various parts of your classes and the program as a whole
+
+	I tested the functions and the successful value-changing of my attributes by adding print statements thoughout the program to display certain values at different times, including attributes/ functions such as length, get_length, word, get_word, etc. Additionally, I wrote print functions for the Hash class as well as the HashString class so that I could print out every item in the table to see that they existed and looked to be correct. Finally, I tested the program as a whole by running test inputs on the command line, and comparing them to the results from the provided program called "the_gerp."
+
+
+Bugs/ Edge Cases
+
+	I did have some last minute issues with the case insenstive implementation, which I did by creating a second Hash Table of insenstive HashStrings, and used that one if the user wanted insesntive checks.
+
